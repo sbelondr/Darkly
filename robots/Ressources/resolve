@@ -1,0 +1,14 @@
+# Resolve
+
+## Lien
+http://10.11.200.162/.hidden/
+
+## Explication de la faille
+Dans le fichier robots on peut voir .hidden. On va donc recuperer le dossier en local:
+`wget -e robots=off -r --no-parent http://10.11.200.162/.hidden/`
+
+Puis lancer le script sh.sh:
+`bash sh.sh 10.11.200.162/.hidden | grep README | grep -v voisin | grep -v toujours | grep -v craquer | grep -v aide`
+
+## Correction
+Ne pas stocker des donnees en claire ni ne les rendre facilement accessible.

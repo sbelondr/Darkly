@@ -1,0 +1,11 @@
+# Resolve
+
+## Lien
+http://10.11.200.162/?page=recover
+
+## Explication de la faille
+Le boutton qui permet de reinitialiser le mot de passe stock le mail en dur.
+Il suffit donc de remplacer cette email par une autre qui nous permettra de recevoir le mail et ainsi remplacer le mot de passe.
+
+## Correction
+Stocker l'email et faire cette operation dans le back.

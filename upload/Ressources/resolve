@@ -1,0 +1,17 @@
+# Resolve
+
+## Lien
+http://10.11.200.162/?page=upload#
+
+## Explication de la faille
+On va executer une requete curl pour tromper le site en envoyant un fichier php tout en lui faisant croire que c'est une image:
+`curl -X POST -F "uploaded=@index.php;type=image/jpeg" -F "Upload=Upload" '10.11.200.162/index.php?page=upload'`
+
+- -X POST: envoie une requete de type POST
+- -F "uploaded=@index.php;type=image/jpeg": envoie une valeur de type form avec le fichier php et on precise que c'est une image avec type.
+- -F "Upload=Upload": on renseigne le champs Upload pour simuler l'envoie.
+- '10.11.200.162/index.php?page=upload': lien de la page
+
+## Correction
+En php utiliser finfo_file() pour verifier le type du fichier (https://www.php.net/manual/en/function.finfo-file.php).
+On peut aussi utiliser strlower puis remplacer les .php en .txt pour fixer l'erreur.

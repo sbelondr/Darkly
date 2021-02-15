@@ -1,0 +1,24 @@
+# Resolve
+
+## Lien
+http://10.11.200.162/?page=feedback
+
+## Explication de la faille
+Faille XSS
+Executer ce script js dans une input:
+	<script>alert('coucou');</script>
+
+## Correction
+Bloquer les valeurs suivantes:
+```
+ & --> &amp;
+ < --> &lt;
+ > --> &gt;
+ " --> &quot;
+ ' --> &#x27;
+ / --> &#x2F;
+```
+Remplacer script par autre chose comme p par exemple.
+Utiliser htmlspecialchars pour bloquer certaine faille XSS en php (`htmlspecialchars($string, ENT_QUOTES, 'UTF-8');`)
+
+Appliquer les regles suivantes: `https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html`.

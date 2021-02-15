@@ -1,0 +1,21 @@
+# Resolve
+
+## Lien
+http://10.11.200.162/?page=e43ad1fdc54babe674da7c7b8f0127bde61de3fbe01def7d00f151c2fcca6d1c
+
+## Explication de la faille
+Dans les commentaire de la page on peut voir qu'il nous conseille de passer par https://www.nsa.gov/ avec comme navigateur ft_bornToSec.
+
+Pour cela on va modifier le header en utilisant deux addons un pour modifier et l'autre optionnelle pour voir le resultat de notre modification:
+
+https://addons.mozilla.org/fr/firefox/addon/modheader-firefox/
+https://addons.mozilla.org/fr/firefox/addon/http-header-live/
+
+Dans modheader on va rajouter deux "request header":
+- Referer avec comme valeur https://www.nsa.gov/
+- User-Agent avec comme valeur ft_bornToSec
+
+On recharge la page et on obtient le flag
+
+## Correction
+Ne pas utiliser le header pour verifier les acces car il est facilement modifiable.

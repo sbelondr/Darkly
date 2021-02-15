@@ -1,0 +1,10 @@
+# Resolve
+
+## Lien
+http://10.11.200.176/?page=survey
+
+## Explication de la faille
+Modifier la valeur d'une des options du select.
+
+## Correction
+Verifier dans le back les valeurs retournees.

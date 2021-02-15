@@ -1,0 +1,12 @@
+# Resolve
+
+## Lien
+Dans l'outils de developpement dans l'onglet Stockage
+
+## Explication de la faille
+Dans les cookies, il y en une nomme I_am_admin avec comme valeur false en md5.
+Il suffit donc de prendre la valeur md5 de true et de changer ce cookie pour obtenir le flag.
+
+## Correction
+
+Ne pas utilise les cookies. Preferer le $SESSION en php par exemple.

@@ -1,0 +1,10 @@
+# Resolve
+
+## Lien
+http://10.11.200.162/?page=../../../../../../../../etc/passwd
+
+## Explication de la faille
+Acces a des fichiers systeme non protege grace au get (ici page)
+
+## Correction
+Inclure les fichiers utilise au lieu d'utiliser une redirection avec l'arborescence (voir la faille redirect). Eviter aussi d'utiliser get.

